@@ -1,0 +1,60 @@
+#include <iostream>
+#include <ucm_random>
+using namespace std;
+
+
+int main() {
+
+
+    for (int i=0; i<5; i++) {
+    
+
+    RNG generator;
+
+    int lhs = generator.get(1, 15);
+    int rhs = generator.get(1, 15);
+    int opCode = generator.get(1, 4);
+
+    if (lhs < rhs) {
+        int temp = lhs;
+        lhs = rhs;
+        rhs = temp;
+    }
+
+    string op;
+    int answer;
+    if (opCode == 1) {
+        op = "+";
+        answer = lhs + rhs;
+    }
+    if (opCode == 2) {
+        op = "-";
+        answer = lhs - rhs;
+    }
+    if (opCode == 3) {
+        op = "*";
+        answer = lhs * rhs;
+    }
+    if (opCode == 4) {
+        op = "/";
+        answer = lhs / rhs;
+    }
+
+    cout << "Question "<< i +1 << ": "<< lhs << " " << op << " " << rhs << " = ";
+
+    int input;
+    cin >> input;
+
+    if (input == answer) {
+        cout << "That is correct!" << endl;
+    } else {
+        cout << "That is incorrect. The correct answer is: " << answer << endl;
+    }
+cout << endl;
+
+
+    //end of loop
+    }    
+
+    return 0;
+}
